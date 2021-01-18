@@ -1,13 +1,13 @@
 require 'json'
 
 read_file = File.read("#{__dir__}/elements.json", encoding: 'utf-8')
-parse_file = JSON.parse(read_file, symbolize_names: true)
+elements = JSON.parse(read_file, symbolize_names: true)
 
 puts 'Имеется в наличии вот такие элементы, о каком хотите узнать?'
-puts parse_file.keys.join(', ')
+puts elements.keys.join(', ')
 
 user_input = STDIN.gets.chomp.capitalize.to_sym
-selected_item = parse_file[user_input]
+selected_item = elements[user_input]
 
 output_message =
   if selected_item
